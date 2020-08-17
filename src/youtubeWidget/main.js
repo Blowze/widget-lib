@@ -1,37 +1,22 @@
+import {widgetMob, setStyle} from '../main.js';
 
-let topdent = {
-    release: '0.0.1',
-    widgetVideo: widgetVideo.bind(null),
-};
 
 function widgetVideo(params) {
-
-    console.log('Версия библиотеки виджетов: ' + topdent.release)
-
-    //default position
-    let widgetVideoBlockPosition = 'left';
-
-    // scr video
-
-    let video = params.videoId ? params.videoId : 'M7lc1UVf-VE'
-
-    //16:9
-    let width = params.width ? params.width : 240
-
-
-    //default side
-    let marginSide = params.marginSide ? params.marginSide : 50;
-    let marginBottom = params.marginBottom ? params.marginBottom : 50;
+    let video = params.videoId ? params.videoId : 'M7lc1UVf-VE'; // Ссылка на видео 
+    let width = params.width ? params.width : 240 // Параметры размера
+    let marginSide = params.marginSide ? params.marginSide : 50; //отступ со стороны
+    let marginBottom = params.marginBottom ? params.marginBottom : 50; //отступ снизу
 
     //create element
-    var widgetVideo = document.createElement('div')
-    var widgetVideoBlock = document.createElement('div');
-    var widgetVideoBlockVideo = document.createElement('div');
-    var widgetVideoBlockClick = document.createElement('span');
-    var widgetVideoBlockClose = document.createElement('span');
-    var widgetVideoBlockCloseLine = document.createElement('span');
-    var widgetVideoBlockCloseLineTwo = document.createElement('span');
+    var widgetVideo = document.createElement('div') // Обертка  
+    var widgetVideoBlock = document.createElement('div'); // Основной блок
+    var widgetVideoBlockVideo = document.createElement('div'); // Блок с видео 
+    var widgetVideoBlockClick = document.createElement('span'); // Блок с накладкой
+    var widgetVideoBlockClose = document.createElement('span'); // Крестик блок
+    var widgetVideoBlockCloseLine = document.createElement('span'); // Крестик линия
+    var widgetVideoBlockCloseLineTwo = document.createElement('span'); //Крестик линия два
 
+    // Выстраиваем шаблон
     widgetVideo.appendChild(widgetVideoBlock)
     widgetVideoBlock.appendChild(widgetVideoBlockVideo)
     widgetVideoBlock.appendChild(widgetVideoBlockClick)
@@ -39,21 +24,19 @@ function widgetVideo(params) {
     widgetVideoBlockClose.appendChild(widgetVideoBlockCloseLine)
     widgetVideoBlockClose.appendChild(widgetVideoBlockCloseLineTwo)
 
+    // Устанавливаем атрибуты
     widgetVideoBlockVideo.setAttribute("id", "player")
-
     widgetVideo.className = 'getreview-widget';
-    widgetVideo.setAttribute("data-widget-id", "toket");
     widgetVideo.setAttribute("id", "getreview_widget");
-    widgetVideo.style = `position: fixed; z-index: 999999;`
 
-    var setStyle = function (p_elem, p_styles) {
-        var s;
-        for (s in p_styles) {
-            p_elem.style[s] = p_styles[s];
-        }
-    }
+    
 
-    //css
+    // Стилизация блоков
+
+    setStyle(widgetVideo, {
+        'position': 'fixed',
+        'zIndex': '999999'
+    })
 
     setStyle(widgetVideoBlock, {
         'zIndex': '999999',
@@ -67,6 +50,7 @@ function widgetVideo(params) {
         'boxSizing': 'border-box',
         'userSelect': 'none'
     });
+
     setStyle(widgetVideoBlockClick, {
         'zIndex': '999999',
         'position': 'absolute',
@@ -79,23 +63,6 @@ function widgetVideo(params) {
     });
 
 
-    //css size
-    if (params.orientation == 'vertical') {
-        setStyle(widgetVideoBlock, {
-            'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-            'height': ((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width) * 16) / 9 + 'px'
-        });
-    } else {
-
-        setStyle(widgetVideoBlock, {
-            'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-            'height': (((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width)) * 9) / 16 + 'px'
-        });
-    }
-
-
-
-    //css border
 
     setStyle(widgetVideoBlock, {
 
@@ -104,8 +71,6 @@ function widgetVideo(params) {
         'borderColor': 'rgb(255, 255, 255)',
 
     });
-    //css close
-
 
     setStyle(widgetVideoBlockClose, {
         'position': 'absolute',
@@ -139,9 +104,6 @@ function widgetVideo(params) {
         'background': 'white'
     })
 
-
-
-
     //css video
     setStyle(widgetVideoBlockVideo, {
         'objectFit': 'cover',
@@ -155,8 +117,7 @@ function widgetVideo(params) {
         'transition': 'opacity 0.4s ease-in-out 0s'
     });
 
-    //position
-
+    // Стилизация для выбора стороны
     if (params.position == 'right') {
         setStyle(widgetVideoBlock, {
             'position': 'absolute',
@@ -179,31 +140,52 @@ function widgetVideo(params) {
             'bottom': 0,
         })
     }
+
+    // Адаптив
     if (widgetMob()) {
         setStyle(widgetVideoBlock, {
             'maxWidth': 320 - Math.ceil(.75 * marginSide) + 'px'
         })
     }
 
-    var clicked = false;
+    let clicked = true;
+    let stateHover = true;
+    let stateOpen = false;
+    let stateCloseBg = false;
+    let styleHover = (function () {
+        setStyle(widgetVideoBlock, {
+            'borderColor': 'rgb(0, 0, 255)',
+            'transform': 'scale(1.05) translate(5px, -5px)'
+        })
+    })
+    let styleOrientation = (function (item) {
+        // Стилизация размера под 16:9 и 9:16
+        if (params.orientation == 'vertical') {
+            width = item;
+            setStyle(widgetVideoBlock, {
+                'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
+                'height': ((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width) * 16) / 9 + 'px'
+            });
+        } else {
+            width = item;
+            setStyle(widgetVideoBlock, {
+                'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
+                'height': (((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width)) * 9) / 16 + 'px'
+            });
+        }
+    })
+    styleOrientation(width)
 
-
-
-    //hover
-    clickedHover = false
     widgetVideoBlock.addEventListener("mouseover", function () {
-        if (clickedHover === false) {
+        if (stateHover === true) {
             setStyle(widgetVideoBlockClose, {
                 'opacity': '1',
             })
-            setStyle(widgetVideoBlock, {
-                'borderColor': 'rgb(0, 0, 255)',
-                'transform': 'scale(1.05) translate(5px, -5px)'
-            })
+            styleHover()
         }
     })
     widgetVideoBlock.addEventListener("mouseout", function () {
-        if (clickedHover === false) {
+        if (stateHover === true) {
             setStyle(widgetVideoBlock, {
                 'borderColor': 'rgb(255, 255, 255)',
                 'transform': 'scale(1) translate(0,0)'
@@ -227,7 +209,6 @@ function widgetVideo(params) {
         })();
 
         let player = null;
-        let clickedOpen = false
 
         function setupPlayer() {
             window.YT.ready(function () {
@@ -253,28 +234,16 @@ function widgetVideo(params) {
                 });
 
                 function onPlayerReady(event) {
-                    if (clicked === false) {
+                    if (stateOpen === false) {
                         player.mute();
                     }
                     widgetVideoBlockClose.onclick = function () {
-                        if (clickedOpen === false) {
+                        if (stateOpen === false) {
                             widgetVideo.parentNode.removeChild(widgetVideo);
-                            clickedOpen = true
                         } else {
-                            width = Math.ceil(.5 * width);
                             player.mute();
+                            styleOrientation(Math.ceil(.5 * width))
 
-                            if (params.orientation == 'vertical') {
-                                setStyle(widgetVideoBlock, {
-                                    'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                    'height': ((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width) * 16) / 9 + 'px'
-                                });
-                            } else {
-                                setStyle(widgetVideoBlock, {
-                                    'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                    'height': (((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width)) * 9) / 16 + 'px'
-                                });
-                            }
                             setStyle(widgetVideoBlockCloseLine, {
                                 'transform': 'rotate(45deg)',
                             })
@@ -288,17 +257,16 @@ function widgetVideo(params) {
                                 'borderColor': 'rgb(255, 255, 255)',
                             })
 
-                            clickedOpen = false
-                            clickedBg = true
-                            clickedHover = false
+                            stateOpen = false
+                            stateCloseBg = false
+                            stateHover = true
                         }
                     }
 
                     widgetVideoBlockClick.onclick = function () {
-                        clickedOpen = true
 
-                        if (clickedHover === false) {
-                            width = Math.ceil(2 * width);
+                        if (stateOpen === false) {
+                            styleOrientation(Math.ceil(2 * width))
                             player.unMute()
 
                             setStyle(widgetVideoBlockClick, {
@@ -314,34 +282,20 @@ function widgetVideo(params) {
                             setStyle(widgetVideoBlockCloseLineTwo, {
                                 'transform': 'rotate(90deg)',
                             })
-
-                            if (params.orientation == 'vertical') {
-                                setStyle(widgetVideoBlock, {
-                                    'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                    'height': ((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width) * 16) / 9 + 'px'
-                                });
-                            } else {
-                                setStyle(widgetVideoBlock, {
-                                    'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                    'height': (((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width)) * 9) / 16 + 'px'
-                                });
-                            }
-                            clickedHover = true;
-                            clickedBg = false
+                            stateHover = false;
+                            stateOpen = true;
+                            stateCloseBg = true;
                         }
 
                         return false;
                     }
-                    clickedBg = true
-
                     document.addEventListener('click', function (event) {
                         var e = widgetVideo;
 
                         if (!e.contains(event.target)) {
 
-                            if (clickedBg === false) {
+                            if (stateCloseBg === true) {
 
-                                width = Math.ceil(.5 * width);
                                 player.mute();
                                 setStyle(widgetVideoBlockCloseLine, {
                                     'transform': 'rotate(45deg)',
@@ -350,25 +304,17 @@ function widgetVideo(params) {
                                     'transform': 'rotate(-45deg)',
                                 })
 
-                                if (params.orientation == 'vertical') {
-                                    setStyle(widgetVideoBlock, {
-                                        'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                        'height': ((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width) * 16) / 9 + 'px'
-                                    });
-                                } else {
-                                    setStyle(widgetVideoBlock, {
-                                        'width': widgetMob() ? "".concat(Math.ceil(.75 * width), "px") : width + 'px',
-                                        'height': (((widgetMob() ? "".concat(Math.ceil(.75 * width)) : width)) * 9) / 16 + 'px'
-                                    });
-                                }
-                                clickedBg = true
+                                styleOrientation(Math.ceil(.5 * width))
+
                                 setStyle(widgetVideoBlockClick, {
                                     'display': 'block',
                                 })
                                 setStyle(widgetVideoBlock, {
                                     'borderColor': 'rgb(255, 255, 255)',
                                 })
-                                clickedHover = false
+                                stateCloseBg = false;
+                                stateOpen = false;
+                                stateHover = true;
                             }
                         }
                     });
