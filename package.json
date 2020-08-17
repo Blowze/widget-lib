@@ -18,5 +18,7 @@
         "makeup",
         "markup"
     ],
-    "dependencies": {}
+    "dependencies": {
+        "gulp-include": "^2.4.1"
+    }
 }

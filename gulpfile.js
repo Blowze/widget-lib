@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const terser = require('gulp-terser');
-const eslint = require('gulp-eslint')
-
+const eslint = require('gulp-eslint');
 
 gulp.task('scripts', function () {
     return gulp.src('./src/**/*.js') // путь к папке со скриптами
