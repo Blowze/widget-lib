@@ -21,6 +21,7 @@
     "scripts": {
         "build": "gulp scripts"
     },
+    
     "dependencies": {
         "gulp-include": "^2.4.1"
     }
