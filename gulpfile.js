@@ -7,5 +7,5 @@ gulp.task('scripts', function () {
         .pipe(eslint.format())
         .pipe(eslint())
         .pipe(terser())
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('./dist/'));
 });
