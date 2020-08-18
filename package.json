@@ -18,10 +18,6 @@
         "makeup",
         "markup"
     ],
-    "scripts": {
-        "build": "gulp build"
-    },
-
     "dependencies": {
         "gulp-include": "^2.4.1"
     }
