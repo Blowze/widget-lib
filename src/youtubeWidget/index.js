@@ -1,24 +1,5 @@
-const topdent = {
-    release: "0.0.1",
-    widgetVideo: widgetVideo.bind(null)
-};
-
-console.log("Версия библиотеки виджетов: " + topdent.release)
-
-function widgetMob() {
-    if ((/iphone|ipod|ipad|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())) && (screen.width < 992)) {
-        return true
-    } else {
-        return false
-    }
-}
-
-var setStyle = function (p_elem, p_styles) {
-    var s;
-    for (s in p_styles) {
-        p_elem.style[s] = p_styles[s];
-    }
-}
+import '../index.js'
+import '../helper.js'
 
 function widgetVideo(params) {
     let video = params.videoId ? params.videoId : 'M7lc1UVf-VE'; // Ссылка на видео 
