@@ -1,32 +1,56 @@
 const path = require('path');
-// Общие переменные для нескольких конфигов
-const PATHS = {
-    src_bannerMobile: path.join(__dirname, './src/bannerMobile'),
-    src_youtubeWidget: path.join(__dirname, './src/youtubeWidget'),
-    dist: path.join(__dirname, 'build'),
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-  }
-  var config = {
-    entry: {
-        bannerMobile: PATHS.src_bannerMobile,
-        youtubeWidget: PATHS.src_youtubeWidget
-    },
-    output: {
-        filename: `[name]-[contenthash:4]/build.js`,
-        path: PATHS.dist,
-        publicPath: '/'
-      }
-  };
-  module.exports = (env, argv) => {
-
-    if (argv.mode === 'development') {
-      config.output.filename = '[name]-dev/build.js';
-    }
-  
-    if (argv.mode === 'production') {
-      config.output.filename = '[name]-[contenthash:4]/build.js';
-
-    }
-  
-    return config;
-  };
+module.exports = {
+  entry: {
+    bannerMobile: './src/bannerMobile/index.js',
+    youtubeWidget: './src/youtubeWidget/index.js'
+  },
+  devtool: 'inline-source-map',
+  output: {
+    path: path.join(__dirname, '/builds'),
+    filename: '[name]-build-[hash:4]/main.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './fonts'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.ttf', 'otf', '.json'],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+    new CleanWebpackPlugin()
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'builds'),
+    compress: true,
+    port: 5000,
+  },
+};
