@@ -5,7 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     bannerMobile: './src/bannerMobile/index.js',
-    youtubeWidget: './src/youtubeWidget/index.js'
+    youtubeWidget: './src/youtubeWidget/index.js',
+    index: './src/index.js'
   },
   devtool: 'inline-source-map',
   output: {
@@ -17,9 +18,7 @@ module.exports = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
