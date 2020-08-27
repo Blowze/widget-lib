@@ -1,6 +1,6 @@
 {
     "name": "widget",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "devDependencies": {
         "@babel/core": "^7.11.4",
         "babel-loader": "^8.1.0",
@@ -34,12 +34,19 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run build && lint-staged "
+            "pre-commit": "lint-staged "
         }
     },
     "lint-staged": {
         "*.(js|jsx)": [
+            "npm run build",
             "npm run lint:write",
+            "git add"
+        ]
+    },
+    "build-production": {
+        "*.(js|jsx)": [
+            "npm run build",
             "git add"
         ]
     },
