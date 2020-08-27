@@ -143,7 +143,6 @@ const initWidgetVideo = (params) => {
         });
     }
 
-    const clicked = true;
     let stateHover = true;
     let stateOpen = false;
     let stateCloseBg = false;
@@ -197,7 +196,7 @@ const initWidgetVideo = (params) => {
 
         const setupPlayer = () => {
             window.YT.ready(() => {
-                const onPlayerReady = (event) => {
+                const onPlayerReady = () => {
                     if (stateOpen === false) {
                         player.mute();
                     }
