@@ -133,7 +133,7 @@ const bannerMobile = (params) => {
             display: 'block',
             marginLeft: '10px',
             height: '95px',
-            marginTop:  widgetMob() ? '-50px' : '-60px',
+            marginTop: widgetMob() ? '-50px' : '-60px',
             borderRadius: '5px',
             marginRight: widgetMob() ? '20px' : '0',
 
@@ -151,7 +151,7 @@ const bannerMobile = (params) => {
             justifyContent: 'center',
             alignItems: 'center',
             height: '53px',
-            textAlign : widgetMob() ? 'left' : 'center',
+            textAlign: widgetMob() ? 'left' : 'center',
         });
         let i = 0;
         setStyle(arrSlider[0], {

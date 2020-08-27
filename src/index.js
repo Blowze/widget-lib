@@ -16,6 +16,5 @@ topdent.bannerMobile({
             name: 'Элайнеры По цене брекетов',
             image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
         },
-       
     ],
 });
