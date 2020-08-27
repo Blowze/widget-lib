@@ -16,6 +16,7 @@
         "path": "^0.12.7",
         "prettier": "^2.1.1",
         "webpack": "^4.44.1",
+        "webpack-auto-inject-version": "^1.2.2",
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0",
         "webpack-plugin-hash-output": "^3.2.1"
@@ -33,12 +34,15 @@
     },
     "husky": {
         "hooks": {
-          "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged"
         }
-      },
-      "lint-staged": {
-        "*.(js|jsx)": ["npm run lint:write", "git add"]
-      },
+    },
+    "lint-staged": {
+        "*.(js|jsx)": [
+            "npm run lint:write",
+            "git add"
+        ]
+    },
     "dependencies": {
         "eslint-loader": "^4.0.2",
         "eslint-watch": "^7.0.0"
