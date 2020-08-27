@@ -1,18 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const WebpackAutoInject = require('webpack-auto-inject-version');
 module.exports = {
   entry: {
     bannerMobile: './src/bannerMobile/index.js',
-    youtubeWidget: './src/youtubeWidget/index.js',
-    index: './src/index.js'
-
+    youtubeWidget: './src/youtubeWidget/index.js'
   },
   devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, '/builds'),
-    filename: '[name]-build-[hash:4]/main.js',
+    filename: '[name]-build/main.js',
   },
   module: {
     rules: [
@@ -45,6 +43,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new WebpackAutoInject({
+      PACKAGE_JSON_PATH: './package.json',
+      componentsOptions: {
+        InjectAsComment: {
+          tag: 'Build version: {version} - {date}', // default
+          dateFormat: 'dddd, mmmm dS, yyyy, h:MM:ss TT', // default
+          multiLineCommentType: false, // default
+        }
+      }
     }),
     new CleanWebpackPlugin()
   ],

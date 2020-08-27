@@ -7,9 +7,14 @@
         "clean-webpack-plugin": "^3.0.0",
         "eslint": "^7.7.0",
         "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-import": "2.21.2",
+        "eslint-plugin-prettier": "^3.1.4",
         "html-webpack-plugin": "^4.3.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.13",
         "path": "^0.12.7",
+        "prettier": "^2.1.1",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0",
@@ -20,9 +25,20 @@
         "markup"
     ],
     "scripts": {
-        "server": "webpack-dev-server --watch",
-        "build": "webpack --mode development"
+        "server": "webpack --env.major && webpack-dev-server --watch",
+        "build": "webpack --mode development",
+        "lint": "eslint --debug src/",
+        "lint:write": "eslint --debug src/ --fix",
+        "prettier": "prettier --write src/**/*.js"
     },
+    "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "*.(js|jsx)": ["npm run lint:write", "git add"]
+      },
     "dependencies": {
         "eslint-loader": "^4.0.2",
         "eslint-watch": "^7.0.0"

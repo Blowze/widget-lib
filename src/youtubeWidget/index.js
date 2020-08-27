@@ -42,7 +42,8 @@ const initWidgetVideo = (params) => {
         borderStyle: 'solid',
         background: '#eeeeee',
         boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.40)',
-        transition: 'transform 0.2s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, bottom 0.3s ease-in-out, border-color 0.2s ease-in-out, opacity 1s ease-in-out',
+        transition:
+      'transform 0.2s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, bottom 0.3s ease-in-out, border-color 0.2s ease-in-out, opacity 1s ease-in-out',
         outline: 'none',
         cursor: 'pointer',
         boxSizing: 'border-box',
@@ -61,11 +62,9 @@ const initWidgetVideo = (params) => {
     });
 
     setStyle(widgetVideoBlock, {
-
         borderRadius: '20px',
         'borderWidth:': '3px',
         borderColor: 'rgb(255, 255, 255)',
-
     });
 
     setStyle(widgetVideoBlockClose, {
@@ -117,8 +116,12 @@ const initWidgetVideo = (params) => {
     if (params.position === 'right') {
         setStyle(widgetVideoBlock, {
             position: 'absolute',
-            right: widgetMob() ? ''.concat(Math.ceil(0.75 * marginSide), 'px') : `${marginSide}px`,
-            bottom: widgetMob() ? ''.concat(Math.ceil(0.75 * marginBottom), 'px') : `${marginBottom}px`,
+            right: widgetMob()
+                ? ''.concat(Math.ceil(0.75 * marginSide), 'px')
+                : `${marginSide}px`,
+            bottom: widgetMob()
+                ? ''.concat(Math.ceil(0.75 * marginBottom), 'px')
+                : `${marginBottom}px`,
         });
         setStyle(widgetVideo, {
             right: 0,
@@ -127,8 +130,12 @@ const initWidgetVideo = (params) => {
     } else {
         setStyle(widgetVideoBlock, {
             position: 'absolute',
-            left: widgetMob() ? ''.concat(Math.ceil(0.75 * marginSide), 'px') : `${marginSide}px`,
-            bottom: widgetMob() ? ''.concat(Math.ceil(0.75 * marginBottom), 'px') : `${marginBottom}px`,
+            left: widgetMob()
+                ? ''.concat(Math.ceil(0.75 * marginSide), 'px')
+                : `${marginSide}px`,
+            bottom: widgetMob()
+                ? ''.concat(Math.ceil(0.75 * marginBottom), 'px')
+                : `${marginBottom}px`,
         });
         setStyle(widgetVideo, {
             left: 0,
@@ -146,28 +153,36 @@ const initWidgetVideo = (params) => {
     let stateHover = true;
     let stateOpen = false;
     let stateCloseBg = false;
-    const styleHover = (() => {
+    const styleHover = () => {
         setStyle(widgetVideoBlock, {
             borderColor: 'rgb(0, 0, 255)',
             transform: 'scale(1.05) translate(5px, -5px)',
         });
-    });
-    const styleOrientation = ((item) => {
-        // Стилизация размера под 16:9 и 9:16
+    };
+    const styleOrientation = (item) => {
+    // Стилизация размера под 16:9 и 9:16
         if (params.orientation === 'vertical') {
             width = item;
             setStyle(widgetVideoBlock, {
-                width: widgetMob() ? ''.concat(Math.ceil(0.75 * width), 'px') : `${width}px`,
-                height: `${((widgetMob() ? ''.concat(Math.ceil(0.75 * width)) : width) * 16) / 9}px`,
+                width: widgetMob()
+                    ? ''.concat(Math.ceil(0.75 * width), 'px')
+                    : `${width}px`,
+                height: `${
+                    ((widgetMob() ? ''.concat(Math.ceil(0.75 * width)) : width) * 16) / 9
+                }px`,
             });
         } else {
             width = item;
             setStyle(widgetVideoBlock, {
-                width: widgetMob() ? ''.concat(Math.ceil(0.75 * width), 'px') : `${width}px`,
-                height: `${(((widgetMob() ? ''.concat(Math.ceil(0.75 * width)) : width)) * 9) / 16}px`,
+                width: widgetMob()
+                    ? ''.concat(Math.ceil(0.75 * width), 'px')
+                    : `${width}px`,
+                height: `${
+                    ((widgetMob() ? ''.concat(Math.ceil(0.75 * width)) : width) * 9) / 16
+                }px`,
             });
         }
-    });
+    };
     styleOrientation(width);
 
     widgetVideoBlock.addEventListener('mouseover', () => {

@@ -22,5 +22,8 @@
         "import/prefer-default-export": "off",
         "no-restricted-syntax": "off",
         "guard-for-in": "off"
-    }
+    },
+    "plugins": [
+        "prettier"
+      ]
 }

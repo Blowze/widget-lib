@@ -1,7 +1,7 @@
 import setStyle from '../helpers/setStyle';
 import widgetMob from '../helpers/widgetMob';
 
-const bannerMobile = (params) => {
+export default function bannerMobile(params) {
     const bannerLink = params.link ? params.link : '/';
     const bannerTop = params.top ? params.top : 240;
     const bannerSlideTime = params.time ? params.time : 3000;
@@ -136,7 +136,6 @@ const bannerMobile = (params) => {
             marginTop: widgetMob() ? '-50px' : '-60px',
             borderRadius: '5px',
             marginRight: widgetMob() ? '20px' : '0',
-
         });
         setStyle(bannerText, {
             maxWidth: widgetMob() ? '90%' : '65%',
@@ -182,5 +181,14 @@ const bannerMobile = (params) => {
     if (widgetMob()) {
         document.body.append(bannerWrap);
     }
+}
+const version = '[AIV]{version}[/AIV]';
+window.topdent = {
+    bannerMobile: bannerMobile.bind(null),
 };
-export default bannerMobile;
+console.log({
+    version: `${version}`,
+    screen: `${window.screen.width}x${window.screen.height}`,
+    device: navigator.userAgent,
+    link: document.location.href,
+});
