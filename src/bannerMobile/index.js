@@ -179,7 +179,9 @@ const bannerMobile = (params) => {
         document.body.append(bannerWrap);
     }
 };
-// Нельзя вызвать метод объекта который еще не был создан
-// topdent.bannerMobile({})
-
+const topdent = {
+    release: '0.0.1',
+    bannerMobile: bannerMobile.bind(null),
+};
+console.log(`Версия библиотеки виджетов: ${topdent.release}`);
 export default bannerMobile;
