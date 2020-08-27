@@ -5,8 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     bannerMobile: './src/bannerMobile/index.js',
-    youtubeWidget: './src/youtubeWidget/index.js',
-    index: './src/index.js'
+    youtubeWidget: './src/youtubeWidget/index.js'
   },
   devtool: 'inline-source-map',
   output: {
