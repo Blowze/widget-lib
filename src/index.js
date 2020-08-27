@@ -7,7 +7,6 @@ export const topdent = {
     bannerMobile: bannerMobile.bind(null),
 };
 console.log(`Версия библиотеки виджетов: ${topdent.release}`);
-
 topdent.bannerMobile({
     link: 'https://24stoma.ru/bazalnaya-implantaciya.html',
     time: 3000,
