@@ -1,47 +1,207 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Виджеты</title>
-    <!-- <script type="text/javascript" async="" src="./build/bannerMobile-dev/build.js"></script> -->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+    <main>
+        <div class="container">
+            <h1 class="header">Widget-lib</h1>
+            <p class="caption ">[AIV]{version}[/AIV]</p>
+            <h4>Список доступных скриптов</h4>
+            <ul>
+                <li><a href="#1"
+                        >bannerMobile.js</a></li>
+                <li><a href="#2"
+                        >youtubeWidget.js</a></li>
+            </ul>
+            <br />
+            <h4 id="1">bannerMobile</h4>
+            <h5>1. Установка </h5>
+            <p class="caption ">Подключаем скрипт перед закрывающимся тегом body </p>
+            <blockquote>
+                <ol>
+                    <li>
+                        <font color="#808080">
+                            &lt;!--&nbsp;Compiled&nbsp;and&nbsp;minified&nbsp;JavaScript&nbsp;--&gt;</font>
+                    </li>
+                    <li>
+                        <font color="#009900">&lt;<font color="#000000">script</font>&nbsp;<font color="#000066">src
+                            </font>
+                            <font color="#66cc66">=</font>
+                            <font color="#ff0000">
+                                &quot;https://widget-lib.vercel.app/bannerMobile-build/main.js&quot;</font>&gt;
+                        </font>
+                    </li>
+                    <li>
+                        <font color="#009900">&lt;<font color="#66cc66">/</font>
+                            <font color="#000000">script</font>&gt;
+                        </font>
+                    </li>
+                </ol>
+            </blockquote>
+            <br />
+            <h5>2. Запуск</h5>
+            <blockquote>
+                <ol>
+                    <li>topdent.<font color="#660066">bannerMobile</font>
+                        <font color="#009900">&#40;</font>
+                        <font color="#009900">&#123;</font>
+                        <font color="#009900">&#125;</font>
+                        <font color="#009900">&#41;</font>
+                    </li>
+                </ol>
+            </blockquote>
+            <br />
 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметры</th>
+                        <th>Значение</th>
+                        <th>Коментарий</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>link</td>
+                        <td>string</td>
+                        <td>Вставялем прямую ссылку</td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td>number</td>
+                        <td>Время смены слайдов</td>
+                    </tr>
+                    <tr>
+                        <td>top</td>
+                        <td>number</td>
+                        <td>Размер прокрутки сверху</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>array</td>
+                        <td>Текст и картинка</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <h6>Пример:</h6>
+            <blockquote>
+                <ol>
+                    <li>
+                        <font color="#009900">&lt;<font color="#000000">script</font>&gt;</font>
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topdent.bannerMobile({</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link:&nbsp;'https://24stoma.ru/bazalnaya-implantaciya.html',
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time:&nbsp;3000,</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;1,</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;[{</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;'Элайнеры&nbsp;
+                        <font color="#009900">&lt;<font color="#000000">br</font>&nbsp;<font color="#66cc66">/</font>
+                            &gt;</font>&nbsp;По&nbsp;цене&nbsp;брекетов',</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;'/img-1.jpg',
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;'Элайнеры&nbsp;
+                        <font color="#009900">&lt;<font color="#000000">br</font>&nbsp;<font color="#66cc66">/</font>
+                            &gt;</font>&nbsp;По&nbsp;цене&nbsp;брекетов&nbsp;2',</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;'/img-2.jpg',
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;'Элайнеры&nbsp;
+                        <font color="#009900">&lt;<font color="#000000">br</font>&nbsp;<font color="#66cc66">/</font>
+                            &gt;</font>&nbsp;По&nbsp;цене&nbsp;брекетов&nbsp;3',</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;'/img-3.jpg',
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&lt;<font color="#66cc66">/</font>
+                            <font color="#000000">script</font>&gt;
+                        </font>
+                    </li>
+                </ol>
+            </blockquote>
+            <br />
+            <h4 id="2">youtubeWidget</h4>
+            <h5>1. Установка </h5>
+            <p class="caption ">Подключаем скрипт перед закрывающимся тегом body </p>
+            <blockquote><ol><li><font color="#808080">&lt;!--&nbsp;Compiled&nbsp;and&nbsp;minified&nbsp;JavaScript&nbsp;--&gt;</font></li><li><font color="#009900">&lt;<font color="#000000">script</font>&nbsp;<font color="#000066">src</font>&nbsp;<font color="#66cc66">=</font>&nbsp;<font color="#ff0000">&quot;https://widget-lib.vercel.app/youtubeWidget-build/main.js&quot;</font>&gt;</font></li><li><font color="#009900">&lt;<font color="#66cc66">/</font>&nbsp;script&gt;</font></li></ol></blockquote>
+            <br />
+            <h5>2. Запуск</h5>
+            <blockquote><ol><li>topdent.<font color="#660066">widgetVideo</font>&nbsp;<font color="#009900">&#40;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font>&nbsp;<font color="#009900">&#41;</font></li></ol></blockquote>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Параметры</th>
+                        <th>Значение</th>
+                        <th>Коментарий</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>videoId</td>
+                        <td>string</td>
+                        <td>Берем из ссылки на youtube , пример HF1dGDQO6Kc</td>
+                    </tr>
+                    <tr>
+                        <td>position</td>
+                        <td>strung</td>
+                        <td>left and right</td>
+                    </tr>
+                    <tr>
+                        <td>marginSlide</td>
+                        <td>number</td>
+                        <td>отступ по сторонам</td>
+                    </tr>
+                    <tr>
+                        <td>marginBottom</td>
+                        <td>number</td>
+                        <td>отступ c с верху</td>
+                    </tr>
+                    <tr>
+                        <td>orientation</td>
+                        <td>string</td>
+                        <td>vertical, по умолчанию горизонтальный </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /> 
+            <h6>Пример:</h6>
+            
+            <br /> 
+            <a target="_blank" href="https://github.com/Blowze/widget-lib" class="waves-effect waves-light btn">GitHub</a>
+            <br /> 
+
+            <br /> 
+            <br /> 
+
+
+        </div>
+        </div>
+    </main>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
-<style>
-    body,
-    html {
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial;
-        line-height: 24px;
-    }
-</style>
-<script>
-    topdent.bannerMobile({
-        link: 'https://24stoma.ru/bazalnaya-implantaciya.html',
-        time: 3000,
-        text: [{
-                name: 'Элайнеры По цене брекетов',
-                image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
-            },
-            {
-                name: 'Элайнеры По цене брекетов 2',
-                image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
-            },
-            {
-                name: 'Элайнеры По цене брекетов 3',
-                image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
-            },
-        ],
-    });
-</script>
 
 </html>

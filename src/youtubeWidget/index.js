@@ -1,7 +1,7 @@
 import setStyle from '../helpers/setStyle';
 import widgetMob from '../helpers/widgetMob';
 
-const initWidgetVideo = (params) => {
+export default function initWidgetVideo(params) {
     const video = params.videoId ? params.videoId : 'M7lc1UVf-VE'; // Ссылка на видео
     let width = params.width ? params.width : 240; // Параметры размера
     const marginSide = params.marginSide ? params.marginSide : 50; // отступ со стороны
@@ -337,6 +337,14 @@ const initWidgetVideo = (params) => {
         });
     }
     document.body.append(widgetVideo);
+}
+const version = '[AIV]{version}[/AIV]';
+window.topdent = {
+    widgetVideo: initWidgetVideo.bind(null),
 };
-
-export default initWidgetVideo;
+console.log([{
+    version: `${version}`,
+    screen: `${window.screen.width}x${window.screen.height}`,
+    device: navigator.userAgent,
+    link: document.location.href,
+}]);
