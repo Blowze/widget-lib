@@ -3,7 +3,7 @@ import widgetMob from '../helpers/widgetMob';
 
 const bannerMobile = (params) => {
     const bannerLink = params.link ? params.link : '/';
-    const bannerTop = params.top ? params.top : -140;
+    const bannerTop = params.top ? params.top : 140;
     const bannerSlideTime = params.time ? params.time : 3000;
 
     // create element
