@@ -21,7 +21,7 @@
     ],
     "scripts": {
         "server": "webpack-dev-server --watch",
-        "build": "webpack --mode production"
+        "build": "webpack --mode development"
     },
     "dependencies": {
         "eslint-loader": "^4.0.2",
