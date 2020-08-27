@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAutoInject = require('webpack-auto-inject-version');
 module.exports = {
@@ -7,7 +8,16 @@ module.exports = {
     bannerMobile: './src/bannerMobile/index.js',
     youtubeWidget: './src/youtubeWidget/index.js'
   },
-  devtool: 'inline-source-map',
+  devtool: false,
+
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+                sourceMap: false,
+            }),
+        ],
+    },
   output: {
     path: path.join(__dirname, '/builds'),
     filename: '[name]-build/main.js',
@@ -59,6 +69,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'builds'),
     compress: true,
-    port: 5000,
+    port: 8080,
   },
 };

@@ -186,9 +186,9 @@ const version = '[AIV]{version}[/AIV]';
 window.topdent = {
     bannerMobile: bannerMobile.bind(null),
 };
-console.log({
+console.log([{
     version: `${version}`,
     screen: `${window.screen.width}x${window.screen.height}`,
     device: navigator.userAgent,
     link: document.location.href,
-});
+}]);

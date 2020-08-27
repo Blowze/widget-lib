@@ -1,6 +1,6 @@
 {
     "name": "widget",
-    "version": "0.0.1",
+    "version": "5.0.0",
     "devDependencies": {
         "@babel/core": "^7.11.4",
         "babel-loader": "^8.1.0",
@@ -27,7 +27,7 @@
     ],
     "scripts": {
         "server": "webpack --env.major && webpack-dev-server --watch",
-        "build": "webpack --mode development",
+        "build": "webpack --mode production",
         "lint": "eslint --debug src/",
         "lint:write": "eslint --debug src/ --fix",
         "prettier": "prettier --write src/**/*.js"
