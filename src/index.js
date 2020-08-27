@@ -16,11 +16,11 @@ topdent.bannerMobile({
             image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
         },
         {
-            name: 'Тест',
+            name: 'Элайнеры По цене брекетов 2',
             image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
         },
         {
-            name: 'Элайнеры тест',
+            name: 'Элайнеры По цене брекетов 3',
             image: 'https://yellmed.ru/static/stock/a2561521bf7a8c5a965a2b543816155b.jpg',
         },
     ],
