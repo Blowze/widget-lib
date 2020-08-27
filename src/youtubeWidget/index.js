@@ -1,6 +1,7 @@
 import setStyle from '../helpers/setStyle';
 import widgetMob from '../helpers/widgetMob';
 
+const version = '[AIV]{version}[/AIV]';
 export default function initWidgetVideo(params) {
     const video = params.videoId ? params.videoId : 'M7lc1UVf-VE'; // Ссылка на видео
     let width = params.width ? params.width : 240; // Параметры размера
@@ -336,15 +337,12 @@ export default function initWidgetVideo(params) {
             loadVideo(video);
         });
     }
+    console.log([{
+        version: `${version}`,
+        screen: `${window.screen.width}x${window.screen.height}`,
+        device: navigator.userAgent,
+        link: document.location.href,
+    }]);
     document.body.append(widgetVideo);
 }
-const version = '[AIV]{version}[/AIV]';
-window.topdent = {
-    widgetVideo: initWidgetVideo.bind(null),
-};
-console.log([{
-    version: `${version}`,
-    screen: `${window.screen.width}x${window.screen.height}`,
-    device: navigator.userAgent,
-    link: document.location.href,
-}]);
+window.topdent.widgetVideo = initWidgetVideo.bind(null);

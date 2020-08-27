@@ -1,6 +1,7 @@
 import setStyle from '../helpers/setStyle';
 import widgetMob from '../helpers/widgetMob';
 
+const version = '[AIV]{version}[/AIV]';
 export default function bannerMobile(params) {
     const bannerLink = params.link ? params.link : '/';
     const bannerTop = params.top ? params.top : 240;
@@ -179,16 +180,16 @@ export default function bannerMobile(params) {
         bannerWrap.parentNode.removeChild(bannerWrap);
     };
     if (widgetMob()) {
+        console.log([{
+            version: `${version}`,
+            screen: `${window.screen.width}x${window.screen.height}`,
+            device: navigator.userAgent,
+            link: document.location.href,
+        }]);
         document.body.append(bannerWrap);
     }
 }
-const version = '[AIV]{version}[/AIV]';
 window.topdent = {
-    bannerMobile: bannerMobile.bind(null),
+
 };
-console.log([{
-    version: `${version}`,
-    screen: `${window.screen.width}x${window.screen.height}`,
-    device: navigator.userAgent,
-    link: document.location.href,
-}]);
+window.topdent.bannerMobile = bannerMobile.bind(null);
