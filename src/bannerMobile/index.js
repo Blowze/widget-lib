@@ -112,7 +112,7 @@ const bannerMobile = (params) => {
             });
         } else {
             setStyle(bannerWrap, {
-                bottom: `-${params.top}px`,
+                bottom: `-${bannerTop}px`,
             });
         }
     });
