@@ -3,7 +3,7 @@ import widgetMob from '../helpers/widgetMob';
 
 const bannerMobile = (params) => {
     const bannerLink = params.link ? params.link : '/';
-    const bannerTop = params.top ? params.top : 0;
+    const bannerTop = params.top ? params.top : -140;
     const bannerSlideTime = params.time ? params.time : 3000;
 
     // create element
@@ -31,7 +31,7 @@ const bannerMobile = (params) => {
         right: '0',
         width: 'auto',
         height: widgetMob() ? '65px' : '95px',
-        background: '#232426',
+        background: 'rgb(35 36 38 / 0.9)',
         color: '#fff',
         textAlign: 'center',
         bottom: `-${bannerTop}px`,
@@ -46,7 +46,7 @@ const bannerMobile = (params) => {
         display: 'block',
         userSelect: 'none',
         textDecoration: 'none',
-        fontSize: widgetMob() ? ''.concat(Math.ceil(0.4 * 22), 'px') : `${22}px`,
+        fontSize: widgetMob() ? ''.concat(Math.ceil(0.5 * 22), 'px') : `${22}px`,
         fontWeight: 700,
         lineHeight: '1.25',
         padding: widgetMob() ? '5px' : '20px',
@@ -57,13 +57,16 @@ const bannerMobile = (params) => {
     });
     setStyle(bannerCloseWrap, {
         position: 'absolute',
-        width: '50px',
-        height: '50px',
+        width: widgetMob() ? '30px' : '50px',
+        height: widgetMob() ? '100%' : '50px',
         background: 'transparent',
         bottom: '0',
         right: '0',
         zIndex: '9999',
         top: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     });
     setStyle(bannerClose, {
         width: '25px',
@@ -75,10 +78,10 @@ const bannerMobile = (params) => {
         zIndex: '9999',
         border: '1px solid #ccc',
         display: 'block',
-        marginLeft: 'auto',
         cursor: 'pointer',
-        margin: '10px',
-        position: 'relative',
+        margin: widgetMob() ? '0' : '10px',
+        position: widgetMob() ? 'relative' : 'relative',
+        top: 0,
         borderRadius: '50%',
         transform: widgetMob() ? 'scale(0.6)' : 'none',
     });
@@ -129,14 +132,14 @@ const bannerMobile = (params) => {
         setStyle(bannerImage, {
             display: 'block',
             marginLeft: '10px',
-            height: widgetMob() ? '65px' : '95px',
-            marginTop: widgetMob() ? '-40px' : '-60px',
+            height: '95px',
+            marginTop:  widgetMob() ? '-50px' : '-60px',
             borderRadius: '5px',
-            marginRight: widgetMob() ? '35px' : '0',
+            marginRight: widgetMob() ? '20px' : '0',
 
         });
         setStyle(bannerText, {
-            maxWidth: widgetMob() ? '95%' : '65%',
+            maxWidth: widgetMob() ? '90%' : '65%',
             opacity: '0',
             margin: 'auto',
             boxSizing: 'border-box',
@@ -145,9 +148,10 @@ const bannerMobile = (params) => {
             right: '0',
             transition: 'all .6s',
             display: 'flex',
-            justifyContent: widgetMob() ? 'flex-start' : 'center',
+            justifyContent: 'center',
             alignItems: 'center',
             height: '53px',
+            textAlign : widgetMob() ? 'left' : 'center',
         });
         let i = 0;
         setStyle(arrSlider[0], {
