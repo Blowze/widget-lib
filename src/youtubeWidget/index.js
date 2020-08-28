@@ -212,7 +212,7 @@ export default function initWidgetVideo(params) {
 
         const setupPlayer = () => {
             window.YT.ready(() => {
-                const onPlayerReady = (event) => {
+                const onPlayerReady = () => {
                     if (stateOpen === false) {
                         player.mute();
                     }
@@ -267,11 +267,11 @@ export default function initWidgetVideo(params) {
 
                         return false;
                     };
-                    event.target.playVideo();
-                    document.addEventListener('click', (events) => {
+                    player.playVideo();
+                    document.addEventListener('click', (event) => {
                         const e = widgetVideo;
 
-                        if (!e.contains(events.target)) {
+                        if (!e.contains(event.target)) {
                             if (stateCloseBg === true) {
                                 player.mute();
                                 setStyle(widgetVideoBlockCloseLine, {
