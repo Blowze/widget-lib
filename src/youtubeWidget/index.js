@@ -246,7 +246,7 @@ export default function initWidgetVideo(params) {
                         if (stateOpen === false) {
                             styleOrientation(Math.ceil(2 * width));
                             player.unMute();
-
+                            player.playVideo();
                             setStyle(widgetVideoBlockClick, {
                                 display: 'none',
                             });
@@ -267,7 +267,7 @@ export default function initWidgetVideo(params) {
 
                         return false;
                     };
-                    player.play();
+                    player.playVideo();
                     document.addEventListener('click', (event) => {
                         const e = widgetVideo;
 
