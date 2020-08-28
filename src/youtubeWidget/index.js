@@ -267,7 +267,7 @@ export default function initWidgetVideo(params) {
 
                         return false;
                     };
-                    player.playVideo();
+                    player.play();
                     document.addEventListener('click', (event) => {
                         const e = widgetVideo;
 
