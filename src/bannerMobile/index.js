@@ -141,6 +141,9 @@ export default function bannerMobile(params) {
         if (arrText[index].image) {
             bannerText.appendChild(bannerImage);
             bannerImage.setAttribute('src', arrText[index].image);
+            if (theme) {
+                bannerImage.classList.add(`${theme}--image`);
+            }
         }
         setStyle(bannerImage, {
             display: 'block',
