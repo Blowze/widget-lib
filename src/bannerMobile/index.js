@@ -6,6 +6,7 @@ export default function bannerMobile(params) {
     const bannerLink = params.link ? params.link : '/';
     const bannerTop = params.top ? params.top : 240;
     const bannerSlideTime = params.time ? params.time : 3000;
+    const theme = params.theme ? params.theme : '';
 
     // create element
     const banner = document.createElement('a'); // Обертка
@@ -25,7 +26,15 @@ export default function bannerMobile(params) {
     // Устанавливаем атрибуты
     banner.setAttribute('href', bannerLink);
     banner.setAttribute('target', '_blank');
-
+    if (theme) {
+        bannerWrap.classList.add(theme);
+        banner.classList.add(`${theme}--banner`);
+        bannerCloseWrap.classList.add(`${theme}--close`);
+        bannerClose.classList.add(`${theme}--close-wrap`);
+        bannerCloseLine.classList.add(`${theme}--close-line`);
+        bannerCloseLineTwo.classList.add(`${theme}--close-line`);
+        bannerCloseLineTwo.classList.add(`${theme}--close-line`);
+    }
     // Стилизация блоков
     setStyle(bannerWrap, {
         left: '0',
@@ -124,6 +133,11 @@ export default function bannerMobile(params) {
         bannerText.innerHTML = arrText[index].name;
         arrSlider.push(bannerText);
         banner.append(bannerText);
+        if (theme) {
+            bannerText.classList.add(`${theme}--text`);
+            bannerText.classList.add(`${theme}--slide`);
+            bannerText.classList.add(`${theme}--slide-${index}`);
+        }
         if (arrText[index].image) {
             bannerText.appendChild(bannerImage);
             bannerImage.setAttribute('src', arrText[index].image);
@@ -161,9 +175,6 @@ export default function bannerMobile(params) {
                 i = 0;
             }
             const filteredItems = arrSlider.filter((value, idx) => i !== idx);
-            // cloneArrSlider.push(bannerText);
-            // const indexOff = cloneArrSlider.splice(1, cloneArrSlider.length - 1);
-            // console.log(indexOff);
             for (const indexs in filteredItems) {
                 setStyle(filteredItems[indexs], {
                     opacity: '0',
@@ -184,8 +195,8 @@ export default function bannerMobile(params) {
             device: navigator.userAgent,
             link: document.location.href,
         }]);
-        document.body.append(bannerWrap);
     }
+    document.body.append(bannerWrap);
 }
 window.topdent = {
 

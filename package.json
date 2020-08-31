@@ -1,6 +1,6 @@
 {
     "name": "widget",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "devDependencies": {
         "@babel/core": "^7.11.4",
         "babel-loader": "^8.1.0",
